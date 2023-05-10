@@ -5,8 +5,8 @@ import Prism from "prismjs";
 import {useSelector} from "react-redux";
 // code effect & Css
 import "prismjs/components/prism-javascript";
-import "../../style/codeStyle/vsCode.css";
-import "../../style/codeStyle/lineNumber.css";
+import "../../style/prismStyle/vsCode.css";
+import "../../style/prismStyle/lineNumber.css";
 import * as A from "../../style/test";
 // import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 // import "prismjs/plugins/line-numbers/prism-line-numbers.css";
