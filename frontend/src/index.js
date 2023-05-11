@@ -15,9 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const initialState = {
     b_id: 0,
     u_id: 0,
-    SERVER_IP : "http://192.168.1.180:9080/",
-    FILE_SEARCH_PATH: "http://192.168.1.180:9080/downloadfile/",
-    FILE_UPLOAD_PATH: "http://192.168.1.180:9080/uploadfile",
+    SERVER_IP : "http://localhost:9080/",
+    FILE_SEARCH_PATH: "http://localhost:9080/downloadfile/",
+    FILE_UPLOAD_PATH: "http://localhost:9080/uploadfile",
     TOKEN : "",
     admin: false,
 };
