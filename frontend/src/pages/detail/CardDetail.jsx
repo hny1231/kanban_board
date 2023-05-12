@@ -12,7 +12,7 @@ import Member from "./Member";
 import Modal from "react-modal";
 import FileForm from "./FileForm";
 import FileAdd from "./FileAdd";
-
+console.log("tset")''
 function CardDetail(props) {
   const cardId = props.props;
   const [isOpen, setIsOpen] = useState(false);
