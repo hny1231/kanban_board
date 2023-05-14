@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import * as A from "../../style/test";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 function Tag(taglist) {
   const test = taglist.props.split('    ');
+  const tagList = taglist.props;
+  const cardId = taglist.cardId;
   const [isOpen, setIsOpen] = useState(false);
   // const [newTag, setNewTag] = useState([test]);
-  const [newTag, setNewTag] = useState(test);
+  const [newTag, setNewTag] = useState([]);
+  
+  const serverIp = useSelector((state) => state.SERVER_IP);
 
   // 모달창 Open
   function openModal() {
@@ -16,38 +21,32 @@ function Tag(taglist) {
   // 모달창 Close
   function closeModal() {
     setIsOpen(false);
-    setNewTag([test]);
+    setNewTag([]);
   }
   
-
-  // axios.get("",{
-  //   // c_id: c_id
-  // }).then(function (response){
-  //   if(response.data ===undefined){
-  //     console.log("response is null");
-  //   }
-  //   setLabel(Object.values(response.date).map(obj=>obj.label))
-  // } ).catch(function (error){
-  //   console.log(error.message);
-  // })
-
-  // 랜덤 색상 생성 함수
-  // function getRandomColor() {
-  //   const letters = "0123456789ABCDEF";
-  //   let color = "#";
-  //   for (let i = 0; i < 6; i++) {
-  //     color += letters[Math.floor(Math.random() * 16)];
-  //   }
-  //   return color;
-  // }
-
-
+  // 태그 저장
+  function saveTag() {
+      axios
+        .post(serverIp + "Tag", newTag.map((tag) => ({
+          tag_name: tag,
+          c_id: cardId,
+          tag_color:1
+        })))
+        .then(function (response) {
+          alert("저장이 완료되었습니다.");
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        });
+      closeModal();
+    }
   // Enter 입력시 저장 및 라벨 생성
   function handleKeyPress(event) {
     if (event.key === "Enter") {
       setNewTag([...newTag, event.target.value]);
       // getRandomColor();
       event.target.value = "";
+
     }
   }
   function handleRemove(index) {
@@ -57,9 +56,16 @@ function Tag(taglist) {
   }
   return (
     <div>
-      <A.Button onClick={openModal} className="plus">
-        +Tag
-      </A.Button>
+      
+  
+      <A.Div onClick={openModal} className="plus tplus">
+        <A.Div className="cardWrap">
+          <A.Div className="tagbuttons"> Tag </A.Div>
+          <A.Div className="cardValue">{test}</A.Div>
+          </A.Div> 
+        {/* <A.Label className="tagbutton"> Tag</A.Label> {test} */}
+      </A.Div>
+      
       <Modal
         isOpen={isOpen}
         onRequestClose={closeModal}
@@ -102,7 +108,7 @@ function Tag(taglist) {
             </div>
           </A.Div>
           <A.Div className="modal_bottom">
-            {/* <A.Input type="button" value="라벨추가"></A.Input> */}
+          <A.Input type="button" value="저장" onClick={saveTag}></A.Input>
           </A.Div>
         </A.Div>
       </Modal>

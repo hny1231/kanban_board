@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import Modal from "react-modal";
+
 
 // -   Main color: #3cb371;
 // -   Main color rgba : (60, 179, 113);
@@ -14,20 +12,6 @@ import Modal from "react-modal";
 // -   orange : #FBAD54 (251, 173, 84, 1);
 // -   blue : #3a7e9f (58, 126, 159, 1);
 // -   black: 404040;
-// #58d791
-
-export const StyledModal = styled(Modal)`
-  background-color: white;
-  &.ReactModal__Overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  &.ReactModal__Content {
-    width: 300px;
-    height: 300px;
-    margin: auto;
-    background-color: white;
-  }
-`;
 
 
 export const Button = styled.button`
@@ -38,10 +22,6 @@ export const Button = styled.button`
   &.btn_close {
     color: #3cb371;
     float: right;
-    background-color: white;
-  }
-  &.plus{
-    color: #3cb371;
     background-color: white;
   }
 `;
@@ -57,7 +37,7 @@ export const Input = styled.input`
         border: none;
         border-radius: 4px;
         padding: 10px 20px;
-        width: 98%;
+        width: 100%;
         &:hover {
             background-color: #3cb371;
             color: white;
@@ -86,30 +66,7 @@ export const Input = styled.input`
         &:default {
           color: red;
         }
-        &.tagForm{
-          width: 99%;
-          position: relative;
-          text-align: center;
-          border: 1px solid #3cb371;
-          border-radius: 4px;
-          &:focus {
-            border: none;
-            /* background-color: #0D8541; */
-            color: #0D8541
-        }
-        }    
-    }    
-    &[type="textArea"]{
-        width: 99%;
-        height: 30%; 
-        border: 1px solid  #3cb371;;
-        &:focus {
-          border: 2px solid  #3cb371; 
-        }
-        
-        }    
-    
-    
+    }
     &[type="file"]{
         width: 99%;
         border: none;
@@ -124,6 +81,7 @@ export const Input = styled.input`
 `;
 
 export const Div = styled.div`
+
     &.modal_box {
         flex-direction: column;
         height: auto;
@@ -133,42 +91,21 @@ export const Div = styled.div`
     }
     &.modal_top {
         flex-direction: column;
-        color: #0D8541;
-    }
-    /* &top1 {
-        display: flex;
-    } */
-    &.top2 {
-        flex-direction: column;
-        border: 10px;
-    }
-    &.top2-middle {
-        display: flex;
-        margin-right: 100px;
+        padding: 0 0 20px 0;
+        width: 100%;
+        /* display: flex; */
+        /* display: inline-block; */
+        justify-content: space-between;
+        
+        
     }
     &.modal_middle {
-      flex-direction: column;
-      width: 100%;
-      height: 75%;
-      position: relative;
-      overflow-y: scroll; 
-      overflow-x: scroll;    
-      /*  스크롤 바 설정 */
-      &::-webkit-scrollbar {
-      width: 10px;  
-      height: 20px; 
-      border: none;
-    }
-      &::-webkit-scrollbar-thumb{
-        color: #3cb371;
-      }
-
-    } 
-    &.middle_top {
-      /* height: auto; */
-      /* border: 1px solid #3cb371; */
-      overflow-y: scroll; 
-      
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        position: relative;
+        /* overflow-y: scroll;  */
+        /* overflow-x: scroll;  */
 
         /*  스크롤 바 설정 */
         /* &::-webkit-scrollbar {
@@ -176,40 +113,12 @@ export const Div = styled.div`
         height: 20px; 
         border: 1px solid black;
     } */
-    }
-    &.middle_middle {
-      /* height: 10%; */
-      /* border: 1px solid #3cb371; */
-    }
-    &.search{
-      font-size: 0.85em;
-      padding-top: 5px;
-    }
-   
-    &.middle_bottom {
-      /* position: absolute; */
-      /* bottom:1%; */
-      min-height: 20px;
-      bottom:0%;
-      width: 100%;
-    }
+
+    } 
+
     &.modal_bottom {
         position: relative;
         width: 98%;
-    }
-    &.date {
-        padding-top: 1%;
-    }
-    &.commentWindow{
-      z-index: 9999;
-      width: 100px;
-      height: 100px;
-      background-color: black;
-    }
-
-    &.memberList {
-      padding-left: 10px;
-      color:#0D8541;
     }
 
     &.labelList{
@@ -218,48 +127,100 @@ export const Div = styled.div`
       height: 10px;
       background-color: black;
     }
-`;
-
-export const StyledCalendar = styled(Calendar)`
-
-    width: 350px;
-    max-width: 100%;
-    background: white;
-    border: none !important;
-    line-height: 1.125em;
-    color: #3cb371;
-
-    // 주말 색상
-    .react-calendar__month-view__days__day--weekend {
-      color: black;
-    }
-    // 이웃달 날 색상
-    .react-calendar__month-view__days__day--neighboringMonth {
-      color: #CFCFCF;
-    }
-    // 오늘 색상
-    .react-calendar__tile--now {
-      background: #3cb371;
+    &.tagbuttons{
       color: white;
+      text-align: center;
+      flex-direction: column;
+      width: 100px;
+      height: 100%;
+      min-height: 20px;
+      background-color: #FBAD54;
     }
-    // 선택한 날 색상
-    .react-calendar__tile:enabled:hover,
-    .react-calendar__tile:enabled:focus {
+    &.memberbuttons{
+      color: white;
+      text-align: center;
+      width: 100px;
+      height: 100%;
+      min-height: 20px;
       background-color: #3cb371;
-      color: white;
     }
-    .react-calendar__navigation {
+    .filebuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100px;
+    height: 100%;
+    background-color: #FB7754;
+    color: white;
+    }
+    .classDes {
       display: flex;
-      height: 44px;
-      margin-bottom: 1em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100px;
+    height: 100%;
+    background-color: #3a7e9f;
+    color: white;
     }
-    // 달력 tile
-    .react-calendar__navigation button {
-      min-width: 44px;
-      background: none;
-    }
-`;
+    &.mplus{
+    border:  1.5px solid #3cb371;
+    color: black;
+    border-radius: 4px;
+    height: 100%;
+  }
+  &.tplus{
+    border:  1.5px solid #FBAD54;
+    color: black;
+    border-radius: 4px;
+    height: 100%;
+  }
+&.plus{
+    /* min-height: 30px; */
+    height: 100%;
+    color: white;
+    width: 100%;
+    text-align: left;
+    background-color: white;
+    padding: 0;
+    margin: 3px;
+    font-size:15px;
+  }
+    &.fileListTable{
+      display: flex;
+      width: 100%;
+      min-height: 30px;
+      border: 1.5px solid #FB7754;
+      border-radius: 4px;
+      margin: 3px;
+      height: 100%;
+      color: white;
+      width: 100%;
+      text-align: left;
+      background-color: white;
+      padding: 0;
+      margin: 3px;
 
+    }
+    &.des{
+      display: flex;
+      width: 100%;
+      border: 1.5px solid #3a7e9f;
+      border-radius: 4px;
+    }
+    &.cardWrap{
+      /* flex-direction: column ; */
+      display: flex;
+      /* height: 100%; */
+    }
+    &.cardValue{
+      background-color: white;
+      color: black;
+      padding-left: 10px;
+    }
+
+`;
 export const Table = styled.table`
 
 `;
@@ -271,9 +232,7 @@ export const Td = styled.td`
     text-align: right;
     color: #3cb371;
     padding-right: 5px;
-  }
-  &.memberTd{
-    text-align: center;
+    background-color: white;
   }
 `;
 
@@ -284,45 +243,25 @@ export const Tr = styled.tr`
   }
 `;
 
-export const Label = styled.label`
-
-&.custom-file-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 16px;
-  color: #555;
-  &:custom-file-upload:hover {
-  background-color: #f7f7f7;
-}
-}
-
-
-`;
-
 export const Textarea = styled.textarea`
-  border: 1px solid #3cb371;
-  border-radius: 2px;
-  width: 99%;
-  max-width: 99%;
-  min-width: 99%;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  /* max-width: 99%; */
+  /* min-width: 99%; */
   min-height: 50px;
   &:hover{
-    border: 2px solid #3cb371;
+    border: none;
   }
   &:focus {
-    border: 2px solid blue;
+    border: none;
   }
 `;
+
 export const Span = styled.span`
   width: auto;
   max-width: 99%;
   min-width: 99%;
-
- 
 `;
 
 

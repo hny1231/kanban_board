@@ -8,9 +8,9 @@ import "prismjs/components/prism-javascript";
 import "../../style/prismStyle/vsCode.css";
 import "../../style/prismStyle/lineNumber.css";
 import * as A from "../../style/test";
-// import "prismjs/plugins/line-numbers/prism-line-numbers.js";
-// import "prismjs/plugins/line-numbers/prism-line-numbers.css";
-// import "prismjs/plugins/download-button/prism-download-file";
+import "prismjs/plugins/line-numbers/prism-line-numbers.js";
+
+
 
 // function FileForm({ fileName, fileType, modalOpen }) {
 function FileForm(fileName) {
@@ -48,10 +48,8 @@ function FileForm(fileName) {
   //파일 요청
   async function getCode() {
     try {
-      const response = await axios.get(fileSearchPath+fileId);
       console.log(fileSearchPath+fileId);
-      // const response = await axios.get(fileSearchPath+fileId);
-      // const response = await axios.get("/fileList/filename1.txt");
+      const response = await axios.get(fileSearchPath+fileId);
       const responseData = response.data;
       setCodeTxt(responseData);
     } catch (error) {
@@ -131,7 +129,7 @@ function FileForm(fileName) {
           <A.Div className="modal_middle">
             <pre className="language-javascript line-numbers">
               {/* <code className="language-javascript lineontentEditable> */}
-              <code className="language-javascript line-numbers">
+              <code className="language-javascript line-numbers" lineontentEditable>
                 {codeTxt}
               </code>
             </pre>

@@ -8,6 +8,7 @@ const color = {
     blue: "#3a7e9f",
     black: "#404040",
     grey: "#c9c9c9",
+    darkerGrey: "#969696",
 };
 
 const fontSize = {
@@ -36,6 +37,12 @@ const buttonTheme = {
     },
 };
 
-const theme = { color, fontSize, buttonTheme };
+const borderRadius = {
+    sm: "4px",
+    basic: "8px",
+    lg: "12px",
+};
+
+const theme = { color, fontSize, borderRadius, buttonTheme };
 
 export default theme;
