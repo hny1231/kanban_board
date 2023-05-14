@@ -2,42 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+
+// STYLE
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style/GlobalStyle";
 import theme from "./style/theme";
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 
+// CONTEXT
+import { Provider } from "react-redux";
+import { store } from "./context/global";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// 초기 상태
-const initialState = {
-    b_id: 0,
-    u_id: 0,
-    SERVER_IP : "http://localhost:9080/",
-    FILE_SEARCH_PATH: "http://localhost:9080/downloadfile/",
-    FILE_UPLOAD_PATH: "http://localhost:9080/uploadfile",
-    TOKEN : "",
-    admin: false,
-};
-
-// reducer
-function setBoard(state = initialState, action) {
-    switch (action.type) {
-        case 'LOGIN':
-            return { ...state, b_id: action.b_id, u_id: action.u_id, admin: action.b_admin, TOKEN: action.token };
-        case 'BOARDSELECT':
-            return { ...state, b_id: action.b_id, u_id: action.u_id, admin: action.b_admin, TOKEN: action.token };
-        case 'LOGOUT':
-            return state
-        default:
-            return state;
-    }
-}
-
-// store 생성
-const store = createStore(setBoard);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
