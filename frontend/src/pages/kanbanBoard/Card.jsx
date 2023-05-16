@@ -108,7 +108,7 @@ function Card({ taskData }) {
 
             {openDetailCard ? (
                 <CardDetail
-                    cardId= {17}
+                    cardId={27}
                     // openModal ={true}
                     openDetailCard={openDetailCard}
                     setOpenDetailCard={setOpenDetailCard}

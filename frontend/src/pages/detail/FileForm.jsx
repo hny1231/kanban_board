@@ -129,7 +129,7 @@ function FileForm(fileName) {
           <A.Div className="modal_middle">
             <pre className="language-javascript line-numbers">
               {/* <code className="language-javascript lineontentEditable> */}
-              <code className="language-javascript line-numbers" lineontentEditable>
+              <code className="language-javascript line-numbers" >
                 {codeTxt}
               </code>
             </pre>

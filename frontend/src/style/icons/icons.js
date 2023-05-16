@@ -5,6 +5,7 @@ import {
     CiSquareChevLeft,
     CiSquareChevRight,
     CiMenuKebab,
+    CiUser,
 } from "react-icons/ci";
 
 import {
@@ -24,6 +25,7 @@ const icons = {
     folderOpenIcon: <CiSquareChevRight className="folder_open" />,
     menuKebabIcon: <CiMenuKebab />,
     plusIcon: <MdExposurePlus1 />,
+    userIcon: <CiUser/>,
 };
 
 export default icons;

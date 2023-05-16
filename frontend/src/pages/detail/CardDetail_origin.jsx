@@ -43,7 +43,11 @@ function CardDetail(props) {
         // OpenDetailCard=false;
         // openModal(false);
         setOpenDetailCard(false);
-    }
+    }    
+    
+    useEffect(()=>{
+        getData();
+      },[])
 
 
     // 날짜, 카드파트너, 태그, 파일 리스트 조회
@@ -79,13 +83,13 @@ function CardDetail(props) {
                         cardDescription: responseData.c_description ? responseData.c_description : ""
                     };
                 });
-                if (!Object.values(responseData.files)) {
+                // if (!Object.values(responseData.files)) {
                 setFileList({
                     fileId: Object.values(responseData.files).map((files) => files.file_id),
                     fileNameList: Object.values(responseData.files).map((files) => files.file_original_name),
                 });
-                } else {
-                }
+                // } else {
+                // }
             } catch (error) {
                 console.log(error.message);
             }

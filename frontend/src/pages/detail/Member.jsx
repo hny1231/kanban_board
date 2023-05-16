@@ -102,6 +102,7 @@ function Member(memList) {
     closeModal();
   }
 
+  // 선택시 리스트 목록 저장시 서버에 넘어가는 리스트
   function plusMember(selectedId) {
     if (selectedList.includes(selectedId)) {
       setSelectedList(selectedList.filter((value) => value !== selectedId));
@@ -117,12 +118,39 @@ function Member(memList) {
     setSelectedList(tag);
   }
 
+  //  삭제버튼(cardDetail창에 보이는 x버튼 동작시)
+  function deleteMember(memeberName) {
+    console.log(serverIp + "cardmember", 
+    {params:{u_id:memeberName}});
+    // axios
+    //   .delete(serverIp + "cardmember", 
+    //   {u_id:memeberName}
+    //   )
+    //   .then(function (response) {
+    //     // alert("저장이 완료되었습니다.");
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error.message);
+    //   });
+  }
+
   return (
     <div className="member">
-      <A.Div onClick={openModal} className="plus mplus">
+      <A.Div className="plus mplus">
         <A.Div className="cardWrap">
-          <A.Div className="memberbuttons"> Member </A.Div>
-          <A.Div className="cardValue">{cardMember}</A.Div>
+          <A.Div  onClick={openModal} className="memberbuttons"> Member </A.Div>
+      
+          <A.Div className="cardValue "> <div>
+            {Object.values(cardMember).map((members, index) => (
+              <A.Div key={index} className="labelList right">
+                <A.Span className="labelList">{members}
+                {/* <A.Button type="button" onClick={() => deleteMember(members)} className="delBtn">
+                  X
+                </A.Button> */}
+                </A.Span>
+              </A.Div>
+            ))}
+          </div></A.Div>
           </A.Div> 
         {/* <A.Label className="tagbutton"> Tag</A.Label> {test} */}
       </A.Div>
@@ -135,8 +163,8 @@ function Member(memList) {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
           },
           content: {
-            width: "350px",
-            height: "500px",
+            width: "300px",
+            height: "300px",
             margin: "auto",
           },
         }}
@@ -149,22 +177,24 @@ function Member(memList) {
             <A.Modal_Title>Member</A.Modal_Title>
             <A.Div className="memberList"></A.Div>
           </A.Div>
+          <div>
+            {Object.values(selectedList).map((member, index) => (
+              <A.Div key={index} className="labelList">
+                <A.Span className="labelList">{member}
+                <A.Button type="button" onClick={() => handleRemove(index)} className="delBtn">
+                  X
+                </A.Button>
+                </A.Span>
+              </A.Div>
+            ))}
+          </div> 
           <A.Input
             type="text"
             onChange={handleMemberPlusChange}
             placeholder="add member.."
             onKeyPress={handleKeyPress}
           ></A.Input>
-          <div>
-            {Object.values(selectedList).map((member, index) => (
-              <div key={index} className="labelList">
-                <A.Span className="labelList">{member}</A.Span>
-                <A.Button type="button" onClick={() => handleRemove(index)}>
-                  X
-                </A.Button>
-              </div>
-            ))}
-          </div>
+          
           <A.Div className="modal_middle">
             <table>
               <tbody>

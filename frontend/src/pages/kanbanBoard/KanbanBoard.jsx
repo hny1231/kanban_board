@@ -19,8 +19,8 @@ function KanbanBoard() {
 
     useEffect(() => {
         BOARD_GET_DATA(
-            // "https://port-0-java-springboot-test-1maxx2alguzrmcx.sel3.cloudtype.app/board/1"
-            "https://port-0-java-springboot-test-1maxx2alguzrmcx.sel3.cloudtype.app/board/userid1"
+            "https://port-0-java-springboot-test-1maxx2alguzrmcx.sel3.cloudtype.app/boardid/2"
+            // "https://port-0-java-springboot-test-1maxx2alguzrmcx.sel3.cloudtype.app/board/userid1"
         )
             .then((res) => {
                 setBoardData(res.data);
